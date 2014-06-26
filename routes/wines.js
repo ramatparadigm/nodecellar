@@ -5,11 +5,11 @@ var Server = mongo.Server,
     BSON = mongo.BSONPure;
 
 var server = new Server('ds027809.mongolab.com', 27809, {auto_reconnect: true});
-db = new Db('winedb', server, {safe: true});
+db = new Db('heroku_app26790332', server, {safe: true});
 
 db.open(function(err, db) {
     if(!err) {
-        console.log("Connected to 'winedb' database");
+        console.log("Connected to 'heroku_app26790332' database");
         db.collection('wines', {safe:true}, function(err, collection) {
             if (err) {
                 console.log("The 'wines' collection doesn't exist. Creating it with sample data...");
