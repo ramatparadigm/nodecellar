@@ -10,12 +10,17 @@ db = new Db('heroku_app26790332', server, {safe: true});
 db.open(function(err, db) {
     if(!err) {
         console.log("Connected to 'heroku_app26790332' database");
+        db.authenticate('heroku', 'heroku', function(err, res) {        
         db.collection('wines', {safe:true}, function(err, collection) {
             if (err) {
                 console.log("The 'wines' collection doesn't exist. Creating it with sample data...");
                 populateDB();
             }
         });
+        });
+    } else {
+        console.log("Error while connecting to mongo db heroku_app26790332 ");
+        console.log(err);
     }
 });
 
